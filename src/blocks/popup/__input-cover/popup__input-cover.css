@@ -1,0 +1,9 @@
+.popup__input-cover {
+  position: relative;
+  padding-bottom: 20px;
+  margin-top: 10px;
+}
+
+.popup__input-cover:first-of-type {
+  margin-top: 0;
+}

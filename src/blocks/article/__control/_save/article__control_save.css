@@ -1,0 +1,12 @@
+.article__control_save {
+  background-image: url(../../../../images/save-icon-normal.svg);
+}
+
+.article__control_save:hover {
+  background-image: url(../../../../images/save-icon-hover.svg);
+}
+
+
+.article__control_save:hover+.article__prompt:not(.article__prompt_invisible) {
+  visibility: visible;
+}

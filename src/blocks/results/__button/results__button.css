@@ -1,0 +1,28 @@
+.results__button {
+  height: 64px;
+  width: 288px;
+  padding: 0;
+  margin: 0 auto;
+  margin-top: 64px;
+  border-radius: 80px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: black;
+  background-color: white;
+  transition: background-color .3s;
+}
+
+.results__button:hover {
+  background-color: rgb(232, 232, 232);
+}
+
+@media screen and (max-width: 1000px) {
+  .results__button {
+    height: 56px;
+    width: 240px;
+    margin-top: 32px;
+  }
+}

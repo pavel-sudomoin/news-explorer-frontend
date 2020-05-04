@@ -1,0 +1,10 @@
+@import url('./_border_black/button_border_black.css');
+@import url('./_border_white/button_border_white.css');
+@import url('./_text_black/button_text_black.css');
+@import url('./_text_white/button_text_white.css');
+
+.button {
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}

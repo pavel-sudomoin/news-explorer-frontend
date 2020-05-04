@@ -1,0 +1,12 @@
+.article__control_trash {
+  background-image: url(../../../../images/trash-icon-normal.svg);
+}
+
+.article__control_trash:hover {
+  background-image: url(../../../../images/trash-icon-hover.svg);
+}
+
+
+.article__control_trash:hover+.article__prompt:not(.article__prompt_invisible) {
+  visibility: visible;
+}

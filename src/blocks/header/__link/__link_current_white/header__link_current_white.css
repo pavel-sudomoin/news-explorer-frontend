@@ -1,0 +1,4 @@
+.header__link.header__link_current_white {
+  border-bottom: 3px solid white;
+  color: white;
+}

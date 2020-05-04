@@ -1,0 +1,10 @@
+.article__figure {
+  position: relative;
+  height: 272px
+}
+
+@media screen and (max-width: 1000px) {
+  .article__figure {
+    height: 150px
+  }
+}

@@ -1,0 +1,22 @@
+@import url('./__link_current_white/header__link_current_white.css');
+@import url('./__link_current_black/header__link_current_black.css');
+
+.header__link {
+  display: block;
+  box-sizing: border-box;
+  height: 100%;
+  margin-right: 35px;
+  padding-top: 30px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 1000px) {
+  .header__link {
+    padding-top: 20px;
+    margin-right: 16px;
+    font-size: 16px;
+  }
+}

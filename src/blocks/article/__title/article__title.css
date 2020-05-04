@@ -1,0 +1,10 @@
+.article__title {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+  .article__title {
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,12 @@
+.author__description {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  padding-top: 50px;
+}
+
+@media screen and (max-width: 1150px) {
+  .author__description {
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,15 @@
+.header__logo {
+  padding: 30px 0 26px 0;
+  margin-right: auto;
+  text-decoration: none;
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 1000px) {
+  .header__logo {
+    padding: 20px 0;
+  }
+}

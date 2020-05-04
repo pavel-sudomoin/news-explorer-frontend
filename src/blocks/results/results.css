@@ -1,0 +1,29 @@
+@import url('./__load/results__load.css');
+@import url('./__load-preloader/results__load-preloader.css');
+@import url('./__load-title/results__load-title.css');
+
+@import url('./__not-found/results__not-found.css');
+@import url('./__not-found-image/results__not-found-image.css');
+@import url('./__not-found-title/results__not-found-title.css');
+@import url('./__not-found-text/results__not-found-text.css');
+
+@import url('./__found/results__found.css');
+@import url('./__found-title/results__found-title.css');
+@import url('./__found-articles/results__found-articles.css');
+
+@import url('./__button/results__button.css');
+
+@import url('./__saved-articles/results__saved-articles.css');
+
+.results  {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 80px 40px;
+  background: #F5F6F7;
+}
+
+@media screen and (max-width: 1000px) {
+  .results {
+    padding: 40px;
+  }
+}

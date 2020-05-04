@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -9,7 +9,8 @@ const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
-    main: './src/js/script.js'
+    main: './src/js/main.js',
+    savedArticles: './src/js/saved-articles.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -44,7 +45,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: '[name].[contenthash].css',
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
@@ -56,8 +57,13 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      template: './src/index.html',
-      filename: 'index.html'
+      template: './src/main.html',
+      filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      template: './src/saved-articles.html',
+      filename: 'saved-articles.html',
     }),
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({

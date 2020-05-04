@@ -1,0 +1,14 @@
+@import url('./_pressed/header__menu-btn_pressed.css');
+
+.header__menu-btn {
+  display: none;
+}
+
+/*
+.header__menu-btn {
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../images/burger-menu-open.svg);
+  cursor: pointer;
+}
+*/

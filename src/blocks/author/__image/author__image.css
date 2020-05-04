@@ -1,0 +1,16 @@
+.author__image {
+  width: 464px;
+  height: 464px;
+  object-fit: contain;
+  margin-right: 56px;
+}
+
+@media screen and (max-width: 1150px) {
+  .author__image {
+    width: 232px;
+    height: 232px;
+    margin-right: 32px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

@@ -1,0 +1,5 @@
+.popup__button.popup__button_disabled {
+  cursor: not-allowed;
+  color: #B6BCBF;
+  background: #E6E8EB;
+}

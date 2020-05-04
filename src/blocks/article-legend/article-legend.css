@@ -1,0 +1,10 @@
+.article-legend {
+  box-sizing: border-box;
+  height: 40px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0 12px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}

@@ -1,0 +1,13 @@
+@import url('./__saved-articles/page__saved-articles.css');
+
+.page  {
+  min-width: 320px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow: hidden;
+}
