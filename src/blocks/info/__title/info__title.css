@@ -15,3 +15,9 @@
     font-size: 14px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .info__title {
+    font-size: 12px;
+  }
+}

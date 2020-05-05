@@ -2,3 +2,17 @@
   padding-top: 62px;
   padding-bottom: 62px;
 }
+
+@media screen and (max-width: 1000px) {
+  .results.page__saved-articles {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .results.page__saved-articles {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}

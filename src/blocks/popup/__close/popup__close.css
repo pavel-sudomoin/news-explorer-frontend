@@ -23,3 +23,10 @@
 .popup__close:after {
   transform: rotate(-45deg);
 }
+
+@media screen and (max-width: 520px) {
+  .popup__close {
+    top: -40px;
+    right: 16px;
+  }
+}
