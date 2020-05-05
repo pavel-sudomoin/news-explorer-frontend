@@ -7,6 +7,10 @@
 @import url('./__nav-items/header__nav-items.css');
 @import url('./__nav-item/header__nav-item.css');
 @import url('./__auth-btn/header__auth-btn.css');
+@import url('./__auth-btn-logout-icon/header__auth-btn-logout-icon.css');
+@import url('./__user-name/header__user-name.css');
+
+@import url('./__overlay/header__overlay.css');
 
 .header  {
   position: relative;

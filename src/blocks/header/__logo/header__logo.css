@@ -6,7 +6,7 @@
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
-  z-index: 2;
+  z-index: 3;
 }
 
 @media screen and (max-width: 1000px) {
@@ -19,5 +19,11 @@
   .header__logo {
     font-size: 16px;
     padding: 16px 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header_menu-open .header__logo {
+    color: white
   }
 }

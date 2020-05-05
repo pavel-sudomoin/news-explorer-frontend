@@ -30,3 +30,9 @@
     border: none;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .header_menu-open .header__link {
+    color: white
+  }
+}
