@@ -1,4 +1,14 @@
+@import url('./_saved-articles/header__nav-item_saved-articles.css');
+@import url('./_logout-btn/header__nav-item_logout-btn.css');
+@import url('./_login-btn/header__nav-item_login-btn.css');
+
 .header__nav-item {
   display: block;
   height: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .header__nav-item {
+    height: auto;
+  }
 }

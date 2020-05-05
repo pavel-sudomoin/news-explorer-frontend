@@ -14,3 +14,12 @@
     margin-bottom: auto;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .author__image {
+    width: 272px;
+    height: 272px;
+    margin: 0;
+    margin-bottom: 24px;
+  }
+}

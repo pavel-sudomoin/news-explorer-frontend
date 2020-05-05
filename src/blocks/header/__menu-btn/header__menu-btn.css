@@ -1,14 +1,21 @@
-@import url('./_pressed/header__menu-btn_pressed.css');
+@import url('./_not-pressed-theme_black/header__menu-btn_not-pressed-theme_black.css');
+@import url('./_not-pressed-theme_white/header__menu-btn_not-pressed-theme_white.css');
 
 .header__menu-btn {
   display: none;
-}
-
-/*
-.header__menu-btn {
   width: 24px;
   height: 24px;
-  background-image: url(../../../images/burger-menu-open.svg);
+  margin: auto 0;
   cursor: pointer;
+  z-index: 2;
 }
-*/
+
+.header_menu-open .header__menu-btn {
+  background-image: url(../../../images/burger-menu-close.svg);
+}
+
+@media screen and (max-width: 700px) {
+  .header__menu-btn {
+    display: block;
+  }
+}

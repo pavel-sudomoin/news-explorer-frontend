@@ -13,5 +13,12 @@
 @media screen and (max-width: 1000px) {
   .search__description {
     margin-bottom: 48px;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .search__description {
+    margin-bottom: 122px;
   }
 }

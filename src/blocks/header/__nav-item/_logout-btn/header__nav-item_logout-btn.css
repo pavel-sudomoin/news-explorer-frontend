@@ -1,0 +1,13 @@
+.header__nav-item.header__nav-item_logout-btn {
+  display: none;
+}
+
+.header_login .header__nav-item_logout-btn {
+  display: block;
+}
+
+@media screen and (max-width: 700px) {
+  .header__nav-item_logout-btn {
+    width: 100%;
+  }
+}

@@ -13,3 +13,16 @@
     grid-row-gap: 8px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .results__found-articles {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 440px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .results__found-articles {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

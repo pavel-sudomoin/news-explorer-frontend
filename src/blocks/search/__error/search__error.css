@@ -2,7 +2,6 @@
 
 .search__error {
   visibility: hidden;
-
   display: block;
   position: absolute;
   bottom: 5px;
@@ -18,5 +17,13 @@
 @media screen and (max-width: 1000px) {
   .search__error {
     bottom: 2px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .search__error {
+    bottom: auto;
+    top: 38px;
+    left: 16px;
   }
 }

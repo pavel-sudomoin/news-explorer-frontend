@@ -1,5 +1,18 @@
-@import url('./_opened/header__nav_opened.css');
-
-.header__nav {
-  
+@media screen and (max-width: 700px) {
+  .header__nav {
+    visibility: hidden;
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: 72px 16px 24px 16px;
+    background-color: #1A1B22;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+  .header_menu-open .header__nav {
+    visibility: visible;
+  }
 }

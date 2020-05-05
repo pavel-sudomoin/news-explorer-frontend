@@ -13,7 +13,14 @@
 
 @media screen and (max-width: 1000px) {
   .search {
-    padding-top: 48px;
+    padding-top: 38px;
     padding-bottom: 48px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search {
+    max-width: 448px;
+    padding: 32px 16px;
   }
 }

@@ -1,0 +1,7 @@
+.header__nav-item.header__nav-item_saved-articles {
+  display: none;
+}
+
+.header_login .header__nav-item_saved-articles {
+  display: block;
+}

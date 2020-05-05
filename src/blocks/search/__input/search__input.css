@@ -38,3 +38,10 @@
     padding-right: 167px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .search__input {
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+}

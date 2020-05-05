@@ -25,3 +25,10 @@
     padding-bottom: 20px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .footer {
+    padding: 20px 16px;
+    flex-direction: column-reverse;
+  }
+}

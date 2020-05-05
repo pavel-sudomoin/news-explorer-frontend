@@ -26,3 +26,10 @@
     margin-top: 32px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .results__button {
+    width: 288px;
+    margin-top: 15px;
+  }
+}

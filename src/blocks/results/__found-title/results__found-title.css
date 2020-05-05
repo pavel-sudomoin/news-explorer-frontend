@@ -16,3 +16,9 @@
     margin-bottom: 32px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .results__found-title {
+    margin-bottom: 24px;
+  }
+}
