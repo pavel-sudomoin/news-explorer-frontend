@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="NewsExplorer - cервис для поиска и сохранения новостей">
+    <meta name="author" content="Sudomoin Pavel">
     <title>NewsExplorer</title>
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.articles.css %>">
     <link rel="shortcut icon" href="../<%=require('./images/favicon.ico').default%>" type="image/x-icon">
@@ -28,7 +30,7 @@
                 <li class="header__nav-item header__nav-item_logout-btn">
                   <button class="header__auth-btn button button_border_black button_text_black">
                     <span class="header__user-name">Грета</span>
-                    <div class="header__auth-btn-logout-icon header__auth-btn-logout-icon_black"></div>
+                    <span class="header__auth-btn-logout-icon header__auth-btn-logout-icon_black"></span>
                   </button>
                 </li>
               </ul>

@@ -2,6 +2,7 @@
 @import url('./_white/header__auth-btn-logout-icon_white.css');
 
 .header__auth-btn-logout-icon {
+  display: block;
   height: 16px;
   width: 18px;
   flex-shrink: 0;
