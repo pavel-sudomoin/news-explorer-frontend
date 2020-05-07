@@ -3,10 +3,11 @@ const presets = [
     '@babel/env',
     {
       targets: {
-        edge: '17',
+        edge: '15',
         firefox: '50',
         chrome: '64',
         safari: '11.1',
+        android: '4',
       },
       useBuiltIns: 'usage',
       corejs: '3.4.1',
