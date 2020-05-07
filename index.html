@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="NewsExplorer - cервис для поиска и сохранения новостей">
+    <meta name="author" content="Sudomoin Pavel">
     <title>NewsExplorer</title>
-    <link rel="stylesheet" href="main/main.77cdaeb4318307389ff9.css">
+    <link rel="stylesheet" href="main/main.b1811521624a0a4dac17.css">
     <link rel="shortcut icon" href="./images/favicon.0b0c2b0ecfda773dc5c784e1f180ae4c.ico" type="image/x-icon">
   </head>
   <body>
@@ -24,12 +26,12 @@
                   <a class="header__link link link_text_gray" href="./articles">Сохранённые статьи</a>
                 </li>
                 <li class="header__nav-item header__nav-item_login-btn">
-                  <button class="header__auth-btn header__auth-btn_login button button_border_white button_text_white">Авторизоваться</button>
+                  <button class="header__auth-btn button button_border_white button_text_white">Авторизоваться</button>
                 </li>
                 <li class="header__nav-item header__nav-item_logout-btn">
-                  <button class="header__auth-btn header__auth-btn_logout button button_border_white button_text_white">
+                  <button class="header__auth-btn button button_border_white button_text_white">
                     <span class="header__user-name">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                    <div class="header__auth-btn-logout-icon header__auth-btn-logout-icon_white"></div>
+                    <span class="header__auth-btn-logout-icon header__auth-btn-logout-icon_white"></span>
                   </button>
                 </li>
               </ul>
@@ -43,7 +45,7 @@
           <form class="search__form" name="form-search" novalidate>
             <input type="text" name="search" required class="search__input" placeholder="Введите тему новости">
             <button type="button" class="search__button button">Искать</button>
-            <span class="search__error search__error_show">Нужно ввести ключевое слово</span>
+            <span class="search__error search__error_open">Нужно ввести ключевое слово</span>
           </form>
         </section>
       </div>
@@ -85,7 +87,7 @@
                   <img class="article__image" src='https://upload.wikimedia.org/wikipedia/commons/3/3b/R34_Xanavi_Skyline_001.JPG' alt="ключевое_слово_статьи"> 
                   <div class="article__interface">
                     <button class="article__control article__control_save article-legend"></button>
-                    <p class="article__prompt article__prompt_invisible article-legend">Войдите, чтобы сохранять статьи</p>
+                    <p class="article__prompt article__prompt_disabled article-legend">Войдите, чтобы сохранять статьи</p>
                   </div>
                 </div>
                 <div class="article__content">
@@ -156,7 +158,11 @@
           </div>
         </section>
         <section class="author">
-          <img class="author__image" src="./images/author.6e9aaef2f553c12991afec486a44c45d.jpg" alt="фотография автора">
+          <picture>
+            <source srcset="./images/author-tablet.d3118b21338eb83600d7e16d336b2e64.jpg" media="(max-width: 1150px)">
+            <source srcset="./images/author-mobile.9000ce1a7ef217cff112e660f071e0f5.jpg" media="(max-width: 600px)">
+            <img class="author__image" src="./images/author-default.a808cc1823e7ab93112a7c3b5ebd0377.jpg" alt="фотография автора">
+          </picture>
           <div class="author__description">
             <h2 class="author__title">Об авторе</h2>
             <p class="author__text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
@@ -192,6 +198,6 @@
       <div class="popup">
       </div>
     </div>
-    <script src="main/main.d7000c22479659703108.js"></script>
+    <script src="main/main.d831b72dc703a00aa36e.js"></script>
   </body>
 </html>
