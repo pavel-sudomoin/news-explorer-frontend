@@ -11,7 +11,7 @@
   <body>
     <div class="page">
       <div class="background-header-search">
-        <header class="header header_login header_menu-open1">
+        <header class="header header_login">
           <div class="header__wrapper">
             <a class="header__logo link link_text_white" href="./">NewsExplorer</a>
             <div class="header__menu-btn header__menu-btn_not-pressed-theme_white"></div>
@@ -24,10 +24,10 @@
                   <a class="header__link link link_text_gray" href="./articles">Сохранённые статьи</a>
                 </li>
                 <li class="header__nav-item header__nav-item_login-btn">
-                  <button class="header__auth-btn button button_border_white button_text_white">Авторизоваться</button>
+                  <button class="header__auth-btn header__auth-btn_login button button_border_white button_text_white">Авторизоваться</button>
                 </li>
                 <li class="header__nav-item header__nav-item_logout-btn">
-                  <button class="header__auth-btn button button_border_white button_text_white">
+                  <button class="header__auth-btn header__auth-btn_logout button button_border_white button_text_white">
                     <span class="header__user-name">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                     <div class="header__auth-btn-logout-icon header__auth-btn-logout-icon_white"></div>
                   </button>
@@ -190,65 +190,8 @@
         </div>
       </footer>
       <div class="popup">
-        <div class="popup__content">
-          <div class="popup__close"></div>
-          <h3 class="popup__title">Регистрация</h3>
-          <form class="popup__form" name="form-signup" novalidate="">
-            <div class="popup__input-cover">
-              <span class="popup__input-title">Email</span>
-              <input type="email" name="email" required class="popup__input popup__input_type_email" placeholder="Введите почту">
-              <span class="popup__error popup__error_type_email">Неправильный формат email</span>
-            </div>
-            <div class="popup__input-cover">
-              <span class="popup__input-title">Пароль</span>
-              <input type="text" name="password" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
-              <span class="popup__error popup__error_type_password">Пароль должен быть больше 8 символов</span>
-            </div>
-            <div class="popup__input-cover popup__input-cover_without-error-message">
-              <span class="popup__input-title">Имя</span>
-              <input type="text" name="name" required class="popup__input popup__input_type_name" placeholder="Введите своё имя">
-            </div>
-            <div class="popup__button-cover">
-              <span class="popup__error popup__error_type_other">Такой пользователь уже есть</span>
-              <button type="submit" class="button popup__button" disabled>Зарегистрироваться</button>
-            </div>
-            <div class="popup__switch-cover">
-              <span>или</span>
-              <span class="popup__switch">Войти</span>
-            </div>
-          </form>
-        </div>
-        <div class="popup__content">
-          <div class="popup__close"></div>
-          <h3 class="popup__title">Вход</h3>
-          <form class="popup__form" name="form-signin" novalidate="">
-            <div class="popup__input-cover">
-              <span class="popup__input-title">Email</span>
-              <input type="email" name="email" required class="popup__input popup__input_type_email" placeholder="Введите почту">
-              <span class="popup__error popup__error_type_email">Неправильный формат email</span>
-            </div>
-            <div class="popup__input-cover">
-              <span class="popup__input-title">Пароль</span>
-              <input type="text" name="password" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
-              <span class="popup__error popup__error_type_password">Пароль должен быть больше 8 символов</span>
-            </div>
-            <div class="popup__button-cover">
-              <span class="popup__error popup__error_type_other">Ошибка сервера</span>
-              <button type="submit" class="button popup__button popup__button_disabled" disabled>Войти</button>
-            </div>
-            <div class="popup__switch-cover">
-              <span>или</span>
-              <span class="popup__switch">Зарегистрироваться</span>
-            </div>
-          </form>
-        </div>
-        <div class="popup__content popup__content_succesfully-registered">
-          <div class="popup__close"></div>
-          <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
-          <span class="popup__switch popup__switch_succesfully-registered">Выполнить вход</span>
-        </div>
       </div>
     </div>
-    <script src="main/main.e6086cad49eba8963634.js"></script>
+    <script src="main/main.d7000c22479659703108.js"></script>
   </body>
 </html>
