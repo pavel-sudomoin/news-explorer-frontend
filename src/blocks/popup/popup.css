@@ -10,7 +10,7 @@
 @import url("./__button/popup__button.css");
 @import url("./__switch-cover/popup__switch-cover.css");
 @import url("./__switch/popup__switch.css");
-@import url("./_is-opened/popup_is-opened.css");
+@import url("./_open/popup_open.css");
 
 .popup {
   position: fixed;

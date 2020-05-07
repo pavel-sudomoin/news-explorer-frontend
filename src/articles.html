@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NewsExplorer</title>
-    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.savedArticles.css %>">
-    <link rel="shortcut icon" href="<%=require('./images/favicon.ico').default%>" type="image/x-icon">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.articles.css %>">
+    <link rel="shortcut icon" href="../<%=require('./images/favicon.ico').default%>" type="image/x-icon">
   </head>
   <body>
     <div class="page">
         <header class="header header_border-non-transparent header_login header_menu-open1">
           <div class="header__wrapper">
-            <a class="header__logo link link_text_black" href="./index.html">NewsExplorer</a>
+            <a class="header__logo link link_text_black" href="../">NewsExplorer</a>
             <div class="header__menu-btn header__menu-btn_not-pressed-theme_black"></div>
             <nav class="header__nav">
               <ul class="header__nav-items">
                 <li class="header__nav-item">
-                  <a class="header__link link link_text_black" href="./index.html">Главная</a>
+                  <a class="header__link link link_text_black" href="../">Главная</a>
                 </li>
                 <li class="header__nav-item header__nav-item_saved-articles">
-                  <a class="header__link header__link_current_black link link_text_black" href="./saved-articles.html">Сохранённые статьи</a>
+                  <a class="header__link header__link_current_black link link_text_black" href="./">Сохранённые статьи</a>
                 </li>
                 <li class="header__nav-item header__nav-item_login-btn">
                   <button class="header__auth-btn button button_border_black button_text_black">Авторизоваться</button>
@@ -42,7 +42,12 @@
           <h2 class="info__number-of-articles">Грета, у вас 5 сохранённых статей</h2>
           <p class="info__key-words">По ключевым словам: <span class="info__text-bold">Природа, Тайга и 2 другим</span></p>
         </section>
-        <section class="results page__saved-articles">
+        <section class="results page__saved-articles results_open">
+          <div class="results__not-found">
+            <img class="results__not-found-image" src="../<%=require('./images/not-found.svg').default%>" alt="Ничего не найдено">
+            <h2 class="results__not-found-title">Ничего не найдено</h2>
+            <p class="results__not-found-text">Вы ещё пока ничего не сохранили</p>
+          </div>
           <div class="results__found-articles results__saved-articles">
               <div class="article">
                 <div class="article__figure">
@@ -146,7 +151,7 @@
         <div class="footer__link-wrapper">
           <ul class="footer__nav-items">
             <li class="footer__nav-item">
-              <a class="footer__nav-link link" href="./index.html">Главная</a>
+              <a class="footer__nav-link link" href="../">Главная</a>
             </li>
             <li class="footer__nav-item">
               <a class="footer__nav-link link" target="_blank" href="https://praktikum.yandex.ru/">Яндекс.Практикум</a>
@@ -155,18 +160,18 @@
           <ul class="footer__soc-items">
             <li class="footer__soc-item">
               <a class="footer__soc-link link" target="_blank" href="https://github.com/pavel-sudomoin/news-explorer-frontend">
-                <img class="footer__soc-image" src="<%=require('./images/github-logo.svg').default%>" alt="GitHub">
+                <img class="footer__soc-image" src="../<%=require('./images/github-logo.svg').default%>" alt="GitHub">
               </a>
             </li>
             <li class="footer__soc-item">
               <a class="footer__soc-link link" target="_blank" href="https://facebook.com">
-                <img class="footer__soc-image" src="<%=require('./images/facebook-logo.svg').default%>" alt="Facebook">
+                <img class="footer__soc-image" src="../<%=require('./images/facebook-logo.svg').default%>" alt="Facebook">
               </a>
             </li>
           </ul>
         </div>
       </footer>
     </div>
-    <script src="<%= htmlWebpackPlugin.files.chunks.savedArticles.entry %>"></script>
+    <script src="<%= htmlWebpackPlugin.files.chunks.articles.entry %>"></script>
   </body>
 </html>

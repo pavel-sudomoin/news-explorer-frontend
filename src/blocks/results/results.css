@@ -1,3 +1,5 @@
+@import url('./_open/results_open.css');
+
 @import url('./__load/results__load.css');
 @import url('./__load-preloader/results__load-preloader.css');
 @import url('./__load-title/results__load-title.css');
@@ -16,6 +18,7 @@
 @import url('./__saved-articles/results__saved-articles.css');
 
 .results  {
+  display: none;
   box-sizing: border-box;
   width: 100%;
   padding: 80px 40px;

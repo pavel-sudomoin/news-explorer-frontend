@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: {
     main: './src/js/main.js',
-    savedArticles: './src/js/saved-articles.js',
+    articles: './src/js/articles.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -72,8 +72,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      template: './src/saved-articles.html',
-      filename: 'saved-articles.html',
+      template: './src/articles.html',
+      filename: './articles/index.html',
     }),
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({
