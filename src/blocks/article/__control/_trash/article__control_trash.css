@@ -7,6 +7,6 @@
 }
 
 
-.article__control_trash:hover+.article__prompt:not(.article__prompt_invisible) {
+.article__control_trash:hover+.article__prompt:not(.article__prompt_disabled) {
   visibility: visible;
 }

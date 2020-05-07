@@ -17,6 +17,8 @@
 
 @import url('./__saved-articles/results__saved-articles.css');
 
+@import url('./__disabled/results__disabled.css');
+
 .results  {
   display: none;
   box-sizing: border-box;
