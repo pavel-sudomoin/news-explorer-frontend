@@ -92,7 +92,7 @@ function setSubmitButtonEnabled(button) {
 }
 
 function setSubmitButtonDisabled(button) {
-  button.setAttribute('disabled', true);
+  button.setAttribute('disabled', 'disabled');
   button.classList.add('popup__button_disabled');
 }
 

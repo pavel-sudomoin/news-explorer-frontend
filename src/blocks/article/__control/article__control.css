@@ -1,5 +1,5 @@
-@import url('./_save/article__control_save.css');
-@import url('./_save-marked/article__control_save-marked.css');
+@import url('./_save_unmarked/article__control_save_unmarked.css');
+@import url('./_save_marked/article__control_save_marked.css');
 @import url('./_trash/article__control_trash.css');
 
 .article__control {

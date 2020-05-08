@@ -1,12 +1,12 @@
-.article__control_save {
+.article__control_save_unmarked {
   background-image: url(../../../../images/save-icon-normal.svg);
 }
 
-.article__control_save:hover {
+.article__control_save_unmarked:hover {
   background-image: url(../../../../images/save-icon-hover.svg);
 }
 
 
-.article__control_save:hover+.article__prompt:not(.article__prompt_disabled) {
+.article__control_save_unmarked:hover+.article__prompt:not(.article__prompt_disabled) {
   visibility: visible;
 }
