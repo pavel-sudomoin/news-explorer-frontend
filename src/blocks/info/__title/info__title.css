@@ -1,0 +1,23 @@
+.info__title {
+  margin: 0;
+  margin-bottom: 28px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+}
+
+@media screen and (max-width: 1000px) {
+  .info__title {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .info__title {
+    font-size: 12px;
+  }
+}

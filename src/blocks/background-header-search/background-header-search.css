@@ -1,0 +1,18 @@
+.background-header-search {
+  width: 100%;
+  background-image: url(../../images/background-header-search-pc.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .background-header-search {
+    background-image: url(../../images/background-header-search-tablet.jpg);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .background-header-search {
+    background-image: url(../../images/background-header-search-mobile.jpg);
+  }
+}

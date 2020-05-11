@@ -1,0 +1,14 @@
+.popup__switch {
+  cursor: pointer;
+  color: #2F71E5;
+}
+
+.popup__content_succesfully-registered .popup__switch {
+  display: block;
+  margin-top: 14px;
+  font-family: 'Inter', Arial, sans-serif;;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+}

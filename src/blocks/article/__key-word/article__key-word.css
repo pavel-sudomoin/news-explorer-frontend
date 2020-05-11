@@ -1,0 +1,15 @@
+.article__key-word {
+  display: block;
+  max-width: 140px;
+  margin-right: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 40px;
+}

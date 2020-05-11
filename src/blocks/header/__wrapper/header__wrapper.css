@@ -1,0 +1,7 @@
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1232px;
+  margin: 0 auto;
+}

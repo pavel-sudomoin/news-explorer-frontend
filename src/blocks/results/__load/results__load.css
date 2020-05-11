@@ -1,0 +1,5 @@
+.results__load {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

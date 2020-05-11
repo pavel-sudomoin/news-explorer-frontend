@@ -1,0 +1,14 @@
+.article__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  padding-top: 20px;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 1000px) {
+  .article__content {
+    padding: 16px;
+  }
+}

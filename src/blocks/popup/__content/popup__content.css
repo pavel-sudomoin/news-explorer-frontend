@@ -1,0 +1,17 @@
+@import url("./_succesfully-registered/popup__content_succesfully-registered.css");
+
+.popup__content {
+  width: 100%;
+  max-width: 430px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 34px 36px 28px 36px;
+}
+
+@media screen and (max-width: 520px) {
+  .popup__content {
+    padding: 16px;
+  }
+}

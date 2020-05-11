@@ -1,0 +1,22 @@
+.article__figure {
+  position: relative;
+  height: 272px
+}
+
+@media screen and (max-width: 1000px) {
+  .article__figure {
+    height: 150px
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .article__figure {
+    height: 170px
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .article__figure {
+    height: 196px
+  }
+}

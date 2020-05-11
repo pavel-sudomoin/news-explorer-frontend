@@ -1,0 +1,28 @@
+@media screen and (max-width: 1100px) {
+  .article__prompt_delete {
+    position: absolute;
+    top: 71px;
+    width: 90px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .article__prompt_delete {
+    top: 55px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .article__prompt_delete {
+    position: static;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .article__prompt_delete {
+    position: absolute;
+    width: 90px;
+  }
+}

@@ -1,0 +1,9 @@
+.header__link_current_black {
+  border-bottom: 3px solid black;
+}
+
+@media screen and (max-width: 700px) {
+  .header__link_current_black {
+    border: none;
+  }
+}

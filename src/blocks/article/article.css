@@ -1,0 +1,21 @@
+@import url('./__figure/article__figure.css');
+@import url('./__image/article__image.css');
+@import url('./__interface/article__interface.css');
+@import url('./__key-word/article__key-word.css');
+@import url('./__prompt/article__prompt.css');
+@import url('./__control/article__control.css');
+
+@import url('./__content/article__content.css');
+@import url('./__date/article__date.css');
+@import url('./__title/article__title.css');
+@import url('./__title-link/article__title-link.css');
+@import url('./__text/article__text.css');
+@import url('./__source/article__source.css');
+
+.article  {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+}

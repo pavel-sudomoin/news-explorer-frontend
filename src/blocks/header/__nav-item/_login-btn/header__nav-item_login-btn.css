@@ -1,0 +1,13 @@
+.header__nav-item.header__nav-item_login-btn {
+  display: block;
+}
+
+.header_login .header__nav-item_login-btn {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .header__nav-item_login-btn {
+    width: 100%;
+  }
+}

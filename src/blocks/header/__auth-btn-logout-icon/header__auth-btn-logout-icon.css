@@ -1,0 +1,15 @@
+@import url('./_black/header__auth-btn-logout-icon_black.css');
+@import url('./_white/header__auth-btn-logout-icon_white.css');
+
+.header__auth-btn-logout-icon {
+  display: block;
+  height: 16px;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .header_menu-open .header__auth-btn-logout-icon {
+    background-image: url(../../../images/logout-icon-white.svg);
+  }
+}

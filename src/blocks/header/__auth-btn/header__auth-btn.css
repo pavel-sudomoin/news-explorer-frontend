@@ -1,0 +1,43 @@
+.header__auth-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 48px;
+  max-width: 250px;
+  padding: 0 19px;
+  margin-top: 19px;
+  background-color: transparent;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  transition: opacity .3s;
+}
+
+.header__auth-btn:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 1000px) {
+  .header__auth-btn {
+    height: 40px;
+    margin-top: 14px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header__auth-btn {
+    width: 100%;
+    max-width: 300px;
+    height: 56px;
+    margin: 0 auto;
+    margin-top: 22px;
+    font-size: 18px;
+  }
+  .header_menu-open .header__auth-btn {
+    color: white;
+    border-color: white;
+  }
+}

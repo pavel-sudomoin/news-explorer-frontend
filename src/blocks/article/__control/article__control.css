@@ -1,0 +1,12 @@
+@import url('./_save_unmarked/article__control_save_unmarked.css');
+@import url('./_save_marked/article__control_save_marked.css');
+@import url('./_trash/article__control_trash.css');
+
+.article__control {
+  min-width: 40px;
+  margin-left: 5px;
+  border: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}

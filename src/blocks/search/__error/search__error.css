@@ -1,0 +1,29 @@
+@import url('./_open/search__error_open.css');
+
+.search__error {
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  bottom: 5px;
+  left: 24px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+}
+
+@media screen and (max-width: 1000px) {
+  .search__error {
+    bottom: 2px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .search__error {
+    bottom: auto;
+    top: 38px;
+    left: 16px;
+  }
+}
