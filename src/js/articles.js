@@ -1,4 +1,3 @@
-/* eslint-disable */
 import '../pages/articles.css';
 
 const headerElem = document.querySelector('.header');

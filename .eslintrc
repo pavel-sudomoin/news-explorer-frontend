@@ -1,6 +1,11 @@
 {
   "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "rules": {
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.config.js"]}]
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.config.js"]}],
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }]
   }
 }
