@@ -32,6 +32,8 @@ export default class NewsApi {
 
     if (!response.ok) throw new Error(`Сервер вернул ошибку ${response.status} (${response.statusText}).`);
 
+    if (!json.articles.length) throw new Error('Ничего не найдено');
+
     return json;
   }
 }

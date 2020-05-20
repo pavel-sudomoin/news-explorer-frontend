@@ -6,14 +6,21 @@ import NewsApi from './api/news-api';
 import Header from '../blocks/header/header';
 import Popup from '../blocks/popup/popup';
 import Form from '../blocks/popup/__form/form';
+import NewsCard from '../blocks/article/news-card';
+import NewsCardList from '../blocks/results/news-card-list';
 
 import headerRefresh from './utils/header-refresh';
 
-import POPUP_CONTENT from './constants/templates';
+import {
+  POPUP_CONTENT,
+  RESULT_CONTENT,
+  ARTICLE_CONTENT,
+} from './constants/templates';
 import {
   POPUP_CONTAINER,
   HEADER_CONTAINER,
   SEARCH_FORM_CONTAINER,
+  RESULT_CONTAINER,
 } from './constants/elements';
 import {
   MAIN_API_URL,
@@ -24,6 +31,9 @@ import {
 import {
   EMPTY_SEARCH_FIELD_MESSAGE,
 } from './constants/messages';
+import {
+  NUMBER_ARTICLES_FOR_DISPLAY,
+} from './constants/values';
 
 
 // создаём инстансы классов
@@ -50,6 +60,7 @@ const popupForms = Object.entries(popup.contentList()).reduce(
   }, {},
 );
 const searchForm = new Form(SEARCH_FORM_CONTAINER);
+const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_CONTENT);
 
 let popupForm;
 
@@ -65,6 +76,7 @@ Object.values(popupForms).forEach((form) => {
 searchForm.addSubmitButton(searchForm.container().querySelector('.search__button'));
 searchForm.addServerError(searchForm.container().querySelector('.search__error'), 'search__error_open');
 
+newsCardList.setArticlesParams('.results__found-articles', '.results__button');
 
 // задаём обработчики
 popup.addHandlers([
@@ -176,12 +188,28 @@ searchForm.addHandlers([
         }
         searchForm.removeServerError();
         searchForm.disable();
+        newsCardList.renderLoader();
         try {
           const { search } = searchForm.getInfo();
           const articles = await newsApi.getNews(search);
-          console.log(articles);
+          newsCardList.renderResults(
+            articles.articles.map((article) => {
+              const data = {
+                keyword: search,
+                title: article.title,
+                text: article.description,
+                date: article.publishedAt,
+                source: article.source.name,
+                link: article.url,
+                image: article.urlToImage,
+              };
+              return (new NewsCard(ARTICLE_CONTENT.cloneNode(true), data));
+            }),
+            NUMBER_ARTICLES_FOR_DISPLAY,
+          );
         } catch (error) {
           searchForm.setServerError(error.message);
+          newsCardList.renderError();
         }
         searchForm.enable();
       }
@@ -199,6 +227,17 @@ searchForm.addHandlers([
           searchForm.setServerError(EMPTY_SEARCH_FIELD_MESSAGE);
           break;
         default:
+      }
+    },
+  },
+]);
+
+newsCardList.addHandlers([
+  {
+    event: 'click',
+    callback: (event) => {
+      if (event.target.classList.contains('results__button')) {
+        newsCardList.showMore(NUMBER_ARTICLES_FOR_DISPLAY);
       }
     },
   },
