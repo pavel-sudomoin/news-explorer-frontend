@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import '../pages/main.css';
 
 import MainApi from './api/main-api';
@@ -10,6 +11,8 @@ import NewsCard from '../blocks/article/news-card';
 import NewsCardList from '../blocks/results/news-card-list';
 
 import headerRefresh from './utils/header-refresh';
+import getUserData from './utils/get-user-data';
+import setArticlesState from './utils/set-articles-state';
 
 import {
   POPUP_CONTENT,
@@ -30,6 +33,9 @@ import {
 } from './constants/api-config';
 import {
   EMPTY_SEARCH_FIELD_MESSAGE,
+  CANNOT_DELETE_ARTICLE_MESSAGE,
+  CANNOT_SAVE_ARTICLE_MESSAGE,
+  CANNOT_LOGOUT_MESSAGE,
 } from './constants/messages';
 import {
   NUMBER_ARTICLES_FOR_DISPLAY,
@@ -62,10 +68,11 @@ const popupForms = Object.entries(popup.contentList()).reduce(
 const searchForm = new Form(SEARCH_FORM_CONTAINER);
 const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_CONTENT);
 
+let userData = {};
 let popupForm;
 
 
-// добавляем свойства элементов, если нужно
+// добавляем свойства, если нужно
 Object.values(popupForms).forEach((form) => {
   const submitButton = form.container().querySelector('.popup__button');
   const serverError = form.container().querySelector('.popup__error_type_other');
@@ -77,6 +84,7 @@ searchForm.addSubmitButton(searchForm.container().querySelector('.search__button
 searchForm.addServerError(searchForm.container().querySelector('.search__error'), 'search__error_open');
 
 newsCardList.setArticlesParams('.results__found-articles', '.results__button');
+
 
 // задаём обработчики
 popup.addHandlers([
@@ -122,7 +130,9 @@ popup.addHandlers([
         case 'form-signin':
           try {
             await mainApi.signin(popupForm.getInfo());
-            await headerRefresh(header, mainApi);
+            userData = await getUserData(mainApi);
+            headerRefresh(header, userData);
+            setArticlesState(newsCardList.getArticles(), userData);
             popupForm.clear();
             popup.close();
           } catch (error) {
@@ -163,15 +173,23 @@ popup.addHandlers([
 header.addHandlers([
   {
     event: 'click',
-    callback: (event) => {
+    callback: async (event) => {
       if (event.target.classList.contains('header__auth-btn') || event.target.parentNode.classList.contains('header__auth-btn')) {
         if (header.isLoggedIn()) {
-          mainApi.signin({}).catch(() => {});
-          header.render({ isLoggedIn: false });
+          try {
+            await mainApi.logout();
+            userData = {};
+            header.render({ isLoggedIn: false });
+            setArticlesState(newsCardList.getArticles(), userData);
+          } catch (err) {
+            alert(`${CANNOT_LOGOUT_MESSAGE} - ${err.message}`);
+          }
         } else {
           popup.show('signin');
           popupForm = popupForms.signin;
         }
+      } else if (event.target.classList.contains('header__menu-btn')) {
+        event.currentTarget.classList.toggle('header_menu-open');
       }
     },
   },
@@ -179,40 +197,43 @@ header.addHandlers([
 
 searchForm.addHandlers([
   {
-    event: 'click',
+    event: 'submit',
     callback: async (event) => {
-      if (event.target.classList.contains('search__button')) {
-        if (!searchForm.validateForm()) {
-          searchForm.setServerError(EMPTY_SEARCH_FIELD_MESSAGE);
-          return;
-        }
-        searchForm.removeServerError();
-        searchForm.disable();
-        newsCardList.renderLoader();
-        try {
-          const { search } = searchForm.getInfo();
-          const articles = await newsApi.getNews(search);
-          newsCardList.renderResults(
-            articles.articles.map((article) => {
-              const data = {
-                keyword: search,
-                title: article.title,
-                text: article.description,
-                date: article.publishedAt,
-                source: article.source.name,
-                link: article.url,
-                image: article.urlToImage,
-              };
-              return (new NewsCard(ARTICLE_CONTENT.cloneNode(true), data));
-            }),
-            NUMBER_ARTICLES_FOR_DISPLAY,
-          );
-        } catch (error) {
-          searchForm.setServerError(error.message);
-          newsCardList.renderError();
-        }
-        searchForm.enable();
+      event.preventDefault();
+      if (!searchForm.validateForm()) {
+        searchForm.setServerError(EMPTY_SEARCH_FIELD_MESSAGE);
+        return;
       }
+      searchForm.removeServerError();
+      searchForm.disable();
+      newsCardList.open();
+      newsCardList.renderLoader();
+      try {
+        const { search } = searchForm.getInfo();
+        const newsData = await newsApi.getNews(search);
+        const articles = newsData.articles.reduce((result, current) => {
+          const data = {
+            keyword: search,
+            title: current.title,
+            text: current.description,
+            date: current.publishedAt,
+            source: current.source.name,
+            link: current.url,
+            image: current.urlToImage,
+          };
+          const isInvalid = Object.values(data).some((val) => val === null);
+          if (!isInvalid) {
+            result.push(new NewsCard(ARTICLE_CONTENT.cloneNode(true), data));
+          }
+          return result;
+        }, []);
+        setArticlesState(articles, userData);
+        newsCardList.renderResults(articles, NUMBER_ARTICLES_FOR_DISPLAY);
+      } catch (error) {
+        newsCardList.renderError();
+        if (error.message !== 'Ничего не найдено') searchForm.setServerError(error.message);
+      }
+      searchForm.enable();
     },
   },
   {
@@ -235,12 +256,42 @@ searchForm.addHandlers([
 newsCardList.addHandlers([
   {
     event: 'click',
-    callback: (event) => {
-      if (event.target.classList.contains('results__button')) {
+    callback: async (event) => {
+      const targetClasses = event.target.classList;
+      if (targetClasses.contains('results__button')) {
         newsCardList.showMore(NUMBER_ARTICLES_FOR_DISPLAY);
+      }
+      if (targetClasses.contains('article__control_save_unmarked') || targetClasses.contains('article__control_save_marked')) {
+        if (!userData.auth) return;
+        const article = newsCardList.getArticles()
+          .find((parent) => parent.getContent().contains(event.target));
+        if (!article) return;
+        if (targetClasses.contains('article__control_save_unmarked')) {
+          try {
+            await mainApi.createArticle(article.getData());
+            userData = await getUserData(mainApi);
+            setArticlesState(newsCardList.getArticles(), userData);
+            article.renderIcon('saved');
+          } catch (err) {
+            alert(`${CANNOT_SAVE_ARTICLE_MESSAGE} - ${err.message}`);
+          }
+        } else if (targetClasses.contains('article__control_save_marked')) {
+          try {
+            await mainApi.removeArticle(article.getId());
+            userData = await getUserData(mainApi);
+            setArticlesState(newsCardList.getArticles(), userData);
+            article.renderIcon('unsaved');
+          } catch (err) {
+            alert(`${CANNOT_DELETE_ARTICLE_MESSAGE} - ${err.message}`);
+          }
+        }
       }
     },
   },
 ]);
 
-headerRefresh(header, mainApi);
+
+(async () => {
+  userData = await getUserData(mainApi);
+  headerRefresh(header, userData);
+})();

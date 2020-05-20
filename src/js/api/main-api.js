@@ -39,6 +39,10 @@ export default class MainApi {
     return this._requestServer('/signin', this._setOptions({ method: 'POST', bodyData }));
   }
 
+  logout() {
+    return this._requestServer('/logout', this._setOptions({ method: 'POST' }));
+  }
+
   getUserData() {
     return this._requestServer('/users/me', this._setOptions({ method: 'GET' }));
   }

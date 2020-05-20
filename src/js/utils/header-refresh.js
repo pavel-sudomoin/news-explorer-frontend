@@ -1,8 +1,8 @@
-export default async function headerRefresh(header, mainApi) {
-  try {
-    const { name: userName } = await mainApi.getUserData();
-    header.render({ isLoggedIn: true, userName });
-  } catch (error) {
+export default function headerRefresh(header, userData) {
+  if (userData.auth) {
+    header.render({ isLoggedIn: true });
+    header.render({ isLoggedIn: true, userName: userData.name });
+  } else {
     header.render({ isLoggedIn: false });
   }
 }

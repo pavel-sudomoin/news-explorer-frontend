@@ -2,10 +2,10 @@ export default class NewsCard {
   constructor(content, data) {
     this._content = content;
     this._data = data;
-    this._cardInitialization();
+    this._articleInitialization();
   }
 
-  _cardInitialization() {
+  _articleInitialization() {
     const {
       key,
       title,
@@ -38,27 +38,40 @@ export default class NewsCard {
   }
 
   renderIcon(state) {
+    const { control, prompt } = this._interfaceElements;
     switch (state) {
       case 'unauth':
-        this.control.classList.remove('article__control_save_marked');
-        this.control.classList.add('article__control_save_unmarked');
-        this.prompt.classList.remove('article__prompt_disabled');
+        control.classList.remove('article__control_save_marked');
+        control.classList.add('article__control_save_unmarked');
+        prompt.classList.remove('article__prompt_disabled');
         break;
       case 'unsaved':
-        this.control.classList.remove('article__control_save_marked');
-        this.control.classList.add('article__control_save_unmarked');
-        this.prompt.classList.add('article__prompt_disabled');
+        control.classList.remove('article__control_save_marked');
+        control.classList.add('article__control_save_unmarked');
+        prompt.classList.add('article__prompt_disabled');
         break;
       case 'saved':
-        this.control.classList.remove('article__control_save_unmarked');
-        this.control.classList.add('article__control_save_marked');
-        this.prompt.classList.add('article__prompt_disabled');
+        control.classList.remove('article__control_save_unmarked');
+        control.classList.add('article__control_save_marked');
+        prompt.classList.add('article__prompt_disabled');
         break;
       default:
     }
   }
 
+  setId(id = undefined) {
+    this._articleId = id;
+  }
+
+  getId() {
+    return this._articleId;
+  }
+
   getContent() {
     return this._content;
+  }
+
+  getData() {
+    return this._data;
   }
 }

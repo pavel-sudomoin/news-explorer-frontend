@@ -6,6 +6,6 @@
   },
   "rules": {
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.config.js"]}],
-    "no-underscore-dangle": ["error", { "allowAfterThis": true }]
+    "no-underscore-dangle": ["error", { "allowAfterThis": true, "allow": ["_id"] }]
   }
 }

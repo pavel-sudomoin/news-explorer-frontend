@@ -55,6 +55,10 @@ export default class NewsCardList extends BaseComponent {
     this._articles.button = this._content.articles.querySelector(buttonSelector);
   }
 
+  open() {
+    this._container.classList.add('results_open');
+  }
+
   renderResults(articles, numberForDisplay) {
     this._removeArticles();
     this._articles.list = articles;
@@ -75,7 +79,7 @@ export default class NewsCardList extends BaseComponent {
     const start = this._articles.displayed;
     let stop = start + numberForDisplay;
 
-    if (stop > this._articles.list.length) {
+    if (stop >= this._articles.list.length) {
       stop = this._articles.list.length;
       this._hideMoreButton();
     } else {
