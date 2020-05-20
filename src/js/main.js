@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import '../pages/main.css';
 
 import MainApi from './api/main-api';
@@ -37,6 +36,7 @@ import {
   CANNOT_DELETE_ARTICLE_MESSAGE,
   CANNOT_SAVE_ARTICLE_MESSAGE,
   CANNOT_LOGOUT_MESSAGE,
+  CONFIRM_LOGOUT_MESSAGE,
 } from './constants/messages';
 import {
   NUMBER_ARTICLES_FOR_DISPLAY,
@@ -177,6 +177,7 @@ header.addHandlers([
     callback: async (event) => {
       if (event.target.classList.contains('header__auth-btn') || event.target.parentNode.classList.contains('header__auth-btn')) {
         if (header.isLoggedIn()) {
+          if (!window.confirm(CONFIRM_LOGOUT_MESSAGE)) return;
           try {
             await mainApi.logout();
             userData = {};
