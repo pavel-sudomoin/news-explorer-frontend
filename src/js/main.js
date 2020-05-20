@@ -13,6 +13,7 @@ import NewsCardList from '../blocks/results/news-card-list';
 import headerRefresh from './utils/header-refresh';
 import getUserData from './utils/get-user-data';
 import setArticlesState from './utils/set-articles-state';
+import dateToString from './utils/date-to-string';
 
 import {
   POPUP_CONTENT,
@@ -216,7 +217,7 @@ searchForm.addHandlers([
             keyword: search,
             title: current.title,
             text: current.description,
-            date: current.publishedAt,
+            date: dateToString(current.publishedAt),
             source: current.source.name,
             link: current.url,
             image: current.urlToImage,
