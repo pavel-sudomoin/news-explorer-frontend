@@ -236,7 +236,7 @@ searchForm.addHandlers([
         const newsData = await newsApi.getNews(search);
         const articles = newsData.articles.reduce((result, current) => {
           const data = {
-            keyword: search,
+            keyword: (search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()).trim(),
             title: current.title,
             text: current.description,
             date: dateToString(current.publishedAt),
