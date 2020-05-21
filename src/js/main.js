@@ -16,8 +16,8 @@ import dateToString from './utils/date-to-string';
 
 import {
   POPUP_CONTENT,
-  RESULT_CONTENT,
-  ARTICLE_CONTENT,
+  RESULT_MAINPAGE_CONTENT,
+  ARTICLE_MAINPAGE_CONTENT,
 } from './constants/templates';
 import {
   POPUP_CONTAINER,
@@ -67,7 +67,7 @@ const popupForms = Object.entries(popup.contentList()).reduce(
   }, {},
 );
 const searchForm = new Form(SEARCH_FORM_CONTAINER);
-const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_CONTENT);
+const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_MAINPAGE_CONTENT);
 
 let userData = {};
 let popupForm;
@@ -246,7 +246,7 @@ searchForm.addHandlers([
           };
           const isInvalid = Object.values(data).some((val) => val === null);
           if (!isInvalid) {
-            result.push(new NewsCard(ARTICLE_CONTENT.cloneNode(true), data));
+            result.push(new NewsCard(ARTICLE_MAINPAGE_CONTENT.cloneNode(true), data));
           }
           return result;
         }, []);

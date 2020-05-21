@@ -2,7 +2,7 @@
   background-image: url(../../../../images/trash-icon-normal.svg);
 }
 
-.article__control_trash:after:hover {
+.article__control_trash:hover:after {
   background-image: url(../../../../images/trash-icon-hover.svg);
 }
 

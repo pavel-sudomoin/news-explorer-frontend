@@ -4,17 +4,14 @@ import MainApi from './api/main-api';
 
 import Header from '../blocks/header/header';
 import Info from '../blocks/info/info';
-import NewsCard from '../blocks/article/news-card';
 import NewsCardList from '../blocks/results/news-card-list';
 
 import headerRefresh from './utils/header-refresh';
 import infoRefresh from './utils/info-refresh';
+import savedArticlesRefresh from './utils/saved-articles-refresh';
 import getUserData from './utils/get-user-data';
 
-import {
-  RESULT_CONTENT,
-  ARTICLE_CONTENT,
-} from './constants/templates';
+import { RESULT_SAVEDPAGE_CONTENT } from './constants/templates';
 import {
   HEADER_CONTAINER,
   RESULT_CONTAINER,
@@ -25,7 +22,6 @@ import {
 } from './constants/api-config';
 import {
   CANNOT_DELETE_ARTICLE_MESSAGE,
-  CANNOT_SAVE_ARTICLE_MESSAGE,
   CANNOT_LOGOUT_MESSAGE,
   CONFIRM_LOGOUT_MESSAGE,
 } from './constants/messages';
@@ -41,14 +37,15 @@ const mainApi = new MainApi({
 });
 const header = new Header(HEADER_CONTAINER);
 const info = new Info(INFO_CONTAINER);
-const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_CONTENT);
+const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_SAVEDPAGE_CONTENT);
 
 let userData = {};
 
 
 // устанавливаем параметры
-newsCardList.setArticlesParams('.results__found-articles', '.results__button');
+newsCardList.setArticlesParams('.results__found-articles');
 info.setParams('.info__number-of-articles', '.info__text-bold');
+
 
 // задаём обработчики
 header.addHandlers([
@@ -111,8 +108,10 @@ newsCardList.addHandlers([
 */
 
 (async () => {
+  newsCardList.renderLoader();
   userData = await getUserData(mainApi);
   if (!userData.auth) window.location.href = '../';
   headerRefresh(header, userData);
   infoRefresh(info, userData);
+  savedArticlesRefresh(newsCardList, userData);
 })();

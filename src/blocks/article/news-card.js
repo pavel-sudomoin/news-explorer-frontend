@@ -7,7 +7,7 @@ export default class NewsCard {
 
   _articleInitialization() {
     const {
-      key,
+      keyword,
       title,
       text,
       date,
@@ -27,7 +27,7 @@ export default class NewsCard {
       prompt: this._content.querySelector('.article__prompt'),
     };
 
-    if (keyElem) keyElem.textContent = key;
+    if (keyElem) keyElem.textContent = keyword;
     linkElem.textContent = title;
     linkElem.href = link;
     textElem.textContent = text;

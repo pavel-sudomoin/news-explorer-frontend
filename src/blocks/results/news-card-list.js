@@ -50,8 +50,12 @@ export default class NewsCardList extends BaseComponent {
     this._setEventListeners(handlers);
   }
 
-  setArticlesParams(containerSelector, buttonSelector) {
-    this._articles.container = this._content.articles.querySelector(containerSelector);
+  setArticlesParams(containerSelector, buttonSelector = undefined) {
+    if (this._content.articles.matches(containerSelector)) {
+      this._articles.container = this._content.articles;
+    } else {
+      this._articles.container = this._content.articles.querySelector(containerSelector);
+    }
     this._articles.button = this._content.articles.querySelector(buttonSelector);
   }
 
@@ -77,7 +81,7 @@ export default class NewsCardList extends BaseComponent {
 
   showMore(numberForDisplay) {
     const start = this._articles.displayed;
-    let stop = start + numberForDisplay;
+    let stop = (numberForDisplay === 'all') ? this._articles.list.length : start + numberForDisplay;
 
     if (stop >= this._articles.list.length) {
       stop = this._articles.list.length;
