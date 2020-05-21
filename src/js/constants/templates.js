@@ -1,4 +1,5 @@
 import templatesHandler from '../utils/templates-handler';
+import { EMAIL_PATTERN } from './values';
 
 const POPUP_SIGNIN_HTML = `
 <div class="popup__content">
@@ -7,7 +8,7 @@ const POPUP_SIGNIN_HTML = `
   <form class="popup__form" name="form-signin" novalidate="">
     <div class="popup__input-cover">
       <span class="popup__input-title">Email</span>
-      <input type="email" name="email" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+      <input type="email" name="email" pattern="${EMAIL_PATTERN}" required class="popup__input popup__input_type_email" placeholder="Введите почту">
       <span class="popup__error popup__error_type_email">Неправильный формат email</span>
     </div>
     <div class="popup__input-cover">
@@ -33,7 +34,7 @@ const POPUP_SIGNUP_HTML = `
   <form class="popup__form" name="form-signup" novalidate="">
     <div class="popup__input-cover">
       <span class="popup__input-title">Email</span>
-      <input type="email" name="email" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+      <input type="email" name="email" pattern="${EMAIL_PATTERN}" required class="popup__input popup__input_type_email" placeholder="Введите почту">
       <span class="popup__error popup__error_type_email">Неправильный формат email</span>
     </div>
     <div class="popup__input-cover">
