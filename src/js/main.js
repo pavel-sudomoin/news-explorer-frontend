@@ -71,6 +71,10 @@ const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_CONTENT);
 
 let userData = {};
 let popupForm;
+const popupOverlay = {
+  mousedown: false,
+  mouseup: false,
+};
 
 
 // устанавливаем параметры
@@ -95,7 +99,7 @@ popup.addHandlers([
       if (popup.isBlocked()) return;
       const cls = event.target.classList;
       switch (true) {
-        case event.currentTarget === event.target:
+        case popupOverlay.mousedown && popupOverlay.mouseup:
         case cls.contains('popup__close'):
           popup.close();
           break;
@@ -109,6 +113,20 @@ popup.addHandlers([
           break;
         default:
       }
+    },
+  },
+  {
+    event: 'mousedown',
+    callback: (event) => {
+      if (event.currentTarget === event.target) popupOverlay.mousedown = true;
+      else popupOverlay.mousedown = false;
+    },
+  },
+  {
+    event: 'mouseup',
+    callback: (event) => {
+      if (event.currentTarget === event.target) popupOverlay.mouseup = true;
+      else popupOverlay.mouseup = false;
     },
   },
   {
