@@ -4,10 +4,20 @@
 @import url('./_processing/article__control_processing.css');
 
 .article__control {
-  min-width: 40px;
+  position: relative;
+  width: 40px;
   margin-left: 5px;
   border: none;
   cursor: pointer;
+}
+
+.article__control:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   background-repeat: no-repeat;
   background-position: center;
 }

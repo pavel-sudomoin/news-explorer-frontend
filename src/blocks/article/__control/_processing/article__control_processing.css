@@ -1,4 +1,4 @@
-.article__control_processing {
+.article__control_processing:after {
   animation: spin .75s infinite linear;
 }
 

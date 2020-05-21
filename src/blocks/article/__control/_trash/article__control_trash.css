@@ -1,8 +1,8 @@
-.article__control_trash {
+.article__control_trash:after {
   background-image: url(../../../../images/trash-icon-normal.svg);
 }
 
-.article__control_trash:hover {
+.article__control_trash:after:hover {
   background-image: url(../../../../images/trash-icon-hover.svg);
 }
 
