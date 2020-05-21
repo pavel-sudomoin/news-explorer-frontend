@@ -1,3 +1,9 @@
-.article__control.article__control_processing {
-  background-image: url(../../../../images/processing-icon.svg);
+.article__control_processing {
+  animation: spin .75s infinite linear;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
 }
