@@ -59,6 +59,14 @@ export default class NewsCard {
     }
   }
 
+  onprocess() {
+    this._interfaceElements.control.classList.add('article__control_processing');
+  }
+
+  offprocess() {
+    this._interfaceElements.control.classList.remove('article__control_processing');
+  }
+
   setId(id = undefined) {
     this._articleId = id;
   }

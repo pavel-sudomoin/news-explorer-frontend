@@ -285,16 +285,17 @@ newsCardList.addHandlers([
         newsCardList.showMore(NUMBER_ARTICLES_FOR_DISPLAY);
       }
       if (targetClasses.contains('article__control_save_unmarked') || targetClasses.contains('article__control_save_marked')) {
+        if (targetClasses.contains('article__control_processing')) return;
         if (!userData.auth) return;
         const article = newsCardList.getArticles()
           .find((parent) => parent.getContent().contains(event.target));
         if (!article) return;
+        article.onprocess();
         if (targetClasses.contains('article__control_save_unmarked')) {
           try {
             await mainApi.createArticle(article.getData());
             userData = await getUserData(mainApi);
             setArticlesState(newsCardList.getArticles(), userData);
-            article.renderIcon('saved');
           } catch (err) {
             alert(`${CANNOT_SAVE_ARTICLE_MESSAGE} - ${err.message}`);
           }
@@ -303,11 +304,11 @@ newsCardList.addHandlers([
             await mainApi.removeArticle(article.getId());
             userData = await getUserData(mainApi);
             setArticlesState(newsCardList.getArticles(), userData);
-            article.renderIcon('unsaved');
           } catch (err) {
             alert(`${CANNOT_DELETE_ARTICLE_MESSAGE} - ${err.message}`);
           }
         }
+        article.offprocess();
       }
     },
   },
