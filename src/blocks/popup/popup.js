@@ -4,6 +4,7 @@ export default class Popup extends BaseComponent {
   constructor({ container, content }) {
     super(container);
     this._content = content;
+    this._isBlocked = false;
   }
 
   addHandlers(handlers) {
@@ -36,5 +37,17 @@ export default class Popup extends BaseComponent {
 
   contentList() {
     return this._content;
+  }
+
+  block() {
+    this._isBlocked = true;
+  }
+
+  unblock() {
+    this._isBlocked = false;
+  }
+
+  isBlocked() {
+    return this._isBlocked;
   }
 }

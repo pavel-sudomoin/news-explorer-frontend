@@ -73,7 +73,7 @@ let userData = {};
 let popupForm;
 
 
-// добавляем свойства, если нужно
+// устанавливаем параметры
 Object.values(popupForms).forEach((form) => {
   const submitButton = form.container().querySelector('.popup__button');
   const serverError = form.container().querySelector('.popup__error_type_other');
@@ -92,9 +92,10 @@ popup.addHandlers([
   {
     event: 'click',
     callback: (event) => {
+      if (popup.isBlocked()) return;
       const cls = event.target.classList;
       switch (true) {
-        // case cls.contains('popup'):
+        case event.currentTarget === event.target:
         case cls.contains('popup__close'):
           popup.close();
           break;
@@ -116,6 +117,7 @@ popup.addHandlers([
       event.preventDefault();
       popupForm.removeServerError();
       popupForm.disable();
+      popup.block();
       switch (event.target.name) {
         case 'form-signup':
           try {
@@ -143,6 +145,7 @@ popup.addHandlers([
           break;
         default:
       }
+      popup.unblock();
     },
   },
   {
@@ -291,6 +294,13 @@ newsCardList.addHandlers([
     },
   },
 ]);
+
+document.addEventListener('keyup', (event) => {
+  if (event.keyCode === 27) {
+    if (popup.isBlocked()) return;
+    popup.close();
+  }
+});
 
 
 (async () => {
