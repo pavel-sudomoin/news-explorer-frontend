@@ -15,7 +15,7 @@ export default function infoRefresh(info, userData) {
   const keysAmount = keysArr.length;
 
   if (keysAmount <= 3) {
-    keysArr.sort((a, b) => a[1] - b[1]);
+    keysArr.sort((a, b) => b[1] - a[1]);
     keysArr = keysArr.map((key) => key[0]);
     if (keysAmount === 0) stringWithKeys = 'ключевые слова не найдены';
     else if (keysAmount === 1) stringWithKeys = `${keysArr[0]}`;
