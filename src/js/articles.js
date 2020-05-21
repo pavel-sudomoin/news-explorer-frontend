@@ -3,10 +3,12 @@ import '../pages/articles.css';
 import MainApi from './api/main-api';
 
 import Header from '../blocks/header/header';
+import Info from '../blocks/info/info';
 import NewsCard from '../blocks/article/news-card';
 import NewsCardList from '../blocks/results/news-card-list';
 
 import headerRefresh from './utils/header-refresh';
+import infoRefresh from './utils/info-refresh';
 import getUserData from './utils/get-user-data';
 
 import {
@@ -16,6 +18,7 @@ import {
 import {
   HEADER_CONTAINER,
   RESULT_CONTAINER,
+  INFO_CONTAINER,
 } from './constants/elements';
 import {
   MAIN_API_URL,
@@ -37,6 +40,7 @@ const mainApi = new MainApi({
   },
 });
 const header = new Header(HEADER_CONTAINER);
+const info = new Info(INFO_CONTAINER);
 const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_CONTENT);
 
 let userData = {};
@@ -44,7 +48,7 @@ let userData = {};
 
 // устанавливаем параметры
 newsCardList.setArticlesParams('.results__found-articles', '.results__button');
-
+info.setParams('.info__number-of-articles', '.info__text-bold');
 
 // задаём обработчики
 header.addHandlers([
@@ -110,4 +114,5 @@ newsCardList.addHandlers([
   userData = await getUserData(mainApi);
   if (!userData.auth) window.location.href = '../';
   headerRefresh(header, userData);
+  infoRefresh(info, userData);
 })();
