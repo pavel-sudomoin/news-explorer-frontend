@@ -17,7 +17,7 @@ export default class NewsApi {
     to = formatDate(to);
     from = formatDate(from);
 
-    const url = `${this._baseUrl}/v2/everything?q=${encodeURIComponent(search)}&from=${from}&to=${to}&apiKey=${this._apiKey}&pageSize=100`;
+    const url = `${this._baseUrl}?q=${encodeURIComponent(search)}&from=${from}&to=${to}&apiKey=${this._apiKey}&pageSize=100`;
     try {
       response = await fetch(url);
     } catch (err) {
