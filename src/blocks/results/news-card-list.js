@@ -100,4 +100,12 @@ export default class NewsCardList extends BaseComponent {
   getArticles() {
     return this._articles.list;
   }
+
+  delete(article) {
+    this._articles.container.removeChild(article.getContent());
+    const index = this._articles.list.indexOf(article);
+    if (index === -1) return;
+    this._articles.list.splice(index, 1);
+    console.log(this._articles.list);
+  }
 }

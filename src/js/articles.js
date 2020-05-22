@@ -10,6 +10,7 @@ import headerRefresh from './utils/header-refresh';
 import infoRefresh from './utils/info-refresh';
 import savedArticlesRefresh from './utils/saved-articles-refresh';
 import getUserData from './utils/get-user-data';
+import setArticlesId from './utils/set-articles-id';
 
 import { RESULT_SAVEDPAGE_CONTENT } from './constants/templates';
 import {
@@ -67,45 +68,33 @@ header.addHandlers([
   },
 ]);
 
-/*
 newsCardList.addHandlers([
   {
     event: 'click',
     callback: async (event) => {
       const targetClasses = event.target.classList;
-      if (targetClasses.contains('results__button')) {
-        newsCardList.showMore(NUMBER_ARTICLES_FOR_DISPLAY);
-      }
-      if (targetClasses.contains('article__control_save_unmarked') || targetClasses.contains('article__control_save_marked')) {
+      if (targetClasses.contains('article__control')) {
         if (targetClasses.contains('article__control_processing')) return;
         if (!userData.auth) return;
         const article = newsCardList.getArticles()
           .find((parent) => parent.getContent().contains(event.target));
         if (!article) return;
         article.onprocess();
-        if (targetClasses.contains('article__control_save_unmarked')) {
-          try {
-            await mainApi.createArticle(article.getData());
-            userData = await getUserData(mainApi);
-            setArticlesState(newsCardList.getArticles(), userData);
-          } catch (err) {
-            alert(`${CANNOT_SAVE_ARTICLE_MESSAGE} - ${err.message}`);
-          }
-        } else if (targetClasses.contains('article__control_save_marked')) {
-          try {
-            await mainApi.removeArticle(article.getId());
-            userData = await getUserData(mainApi);
-            setArticlesState(newsCardList.getArticles(), userData);
-          } catch (err) {
-            alert(`${CANNOT_DELETE_ARTICLE_MESSAGE} - ${err.message}`);
-          }
+        try {
+          await mainApi.removeArticle(article.getId());
+          userData = await getUserData(mainApi);
+          newsCardList.delete(article);
+        } catch (err) {
+          alert(`${CANNOT_DELETE_ARTICLE_MESSAGE} - ${err.message}`);
         }
         article.offprocess();
+        infoRefresh(info, userData);
+        if (newsCardList.getArticles().length === 0) newsCardList.renderError();
       }
     },
   },
 ]);
-*/
+
 
 (async () => {
   newsCardList.renderLoader();
@@ -114,4 +103,5 @@ newsCardList.addHandlers([
   headerRefresh(header, userData);
   infoRefresh(info, userData);
   savedArticlesRefresh(newsCardList, userData);
+  setArticlesId(newsCardList.getArticles(), userData);
 })();

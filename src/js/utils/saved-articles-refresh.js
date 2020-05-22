@@ -3,7 +3,7 @@ import { ARTICLE_SAVEDPAGE_CONTENT } from '../constants/templates';
 
 export default function savedArticlesRefresh(newsCardList, userData) {
   newsCardList.open();
-  if (!userData.auth) {
+  if (!userData.auth || userData.articles.length === 0) {
     newsCardList.renderError();
     return;
   }
