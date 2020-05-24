@@ -22,17 +22,16 @@ export default function infoRefresh(info, userData) {
     else if (keysAmount === 2) stringWithKeys = `${keysArr[0]} и ${keysArr[1]}`;
     else if (keysAmount === 3) stringWithKeys = `${keysArr[0]}, ${keysArr[1]} и ${keysArr[2]}`;
   } else {
-    let firstKey = keysArr[0];
-    let secondKey = keysArr[1];
-    for (let i = 2; i < keysAmount; i += 1) {
-      const currentKey = keysArr[i];
+    let firstKey = ['', 0];
+    let secondKey = firstKey.slice();
+    keysArr.forEach((currentKey) => {
       if (currentKey[1] > firstKey[1]) {
         secondKey = firstKey;
         firstKey = currentKey;
       } else if (currentKey[1] > secondKey[1]) {
         secondKey = currentKey;
       }
-    }
+    });
     stringWithKeys = `${firstKey[0]}, ${secondKey[0]} и ${keysAmount - 2} другим`;
   }
 

@@ -106,6 +106,5 @@ export default class NewsCardList extends BaseComponent {
     const index = this._articles.list.indexOf(article);
     if (index === -1) return;
     this._articles.list.splice(index, 1);
-    console.log(this._articles.list);
   }
 }
