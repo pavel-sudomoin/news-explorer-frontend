@@ -2,7 +2,7 @@ import BaseComponent from '../../../js/components/base-components';
 
 export default class Form extends BaseComponent {
   static validateInputElement(inputElem) {
-    return inputElem.checkValidity();
+    return inputElem.validity;
   }
 
   validateForm() {

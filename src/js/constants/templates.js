@@ -1,5 +1,5 @@
 import templatesHandler from '../utils/templates-handler';
-import { EMAIL_PATTERN } from './values';
+import { EMAIL_PATTERN, NO_WHITESPACES_AT_BOTH_ENDS_PATTERN } from './values';
 
 
 const POPUP_SIGNIN_HTML = `
@@ -10,12 +10,12 @@ const POPUP_SIGNIN_HTML = `
     <div class="popup__input-cover">
       <span class="popup__input-title">Email</span>
       <input type="email" name="email" pattern="${EMAIL_PATTERN}" required class="popup__input popup__input_type_email" placeholder="Введите почту">
-      <span class="popup__error popup__error_type_email">Неправильный формат email</span>
+      <span class="popup__error popup__error_type_email"></span>
     </div>
     <div class="popup__input-cover">
       <span class="popup__input-title">Пароль</span>
-      <input type="text" name="password" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
-      <span class="popup__error popup__error_type_password">Пароль должен быть больше 8 символов</span>
+      <input type="text" name="password" pattern="${NO_WHITESPACES_AT_BOTH_ENDS_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
+      <span class="popup__error popup__error_type_password"></span>
     </div>
     <div class="popup__button-cover">
       <span class="popup__error popup__error_type_other"></span>
@@ -36,17 +36,17 @@ const POPUP_SIGNUP_HTML = `
     <div class="popup__input-cover">
       <span class="popup__input-title">Email</span>
       <input type="email" name="email" pattern="${EMAIL_PATTERN}" required class="popup__input popup__input_type_email" placeholder="Введите почту">
-      <span class="popup__error popup__error_type_email">Неправильный формат email</span>
+      <span class="popup__error popup__error_type_email"></span>
     </div>
     <div class="popup__input-cover">
       <span class="popup__input-title">Пароль</span>
-      <input type="text" name="password" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
-      <span class="popup__error popup__error_type_password">Пароль должен быть больше 8 символов</span>
+      <input type="text" name="password" pattern="${NO_WHITESPACES_AT_BOTH_ENDS_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
+      <span class="popup__error popup__error_type_password"></span>
     </div>
     <div class="popup__input-cover">
       <span class="popup__input-title">Имя</span>
-      <input type="text" name="username" required class="popup__input popup__input_type_name" placeholder="Введите своё имя">
-      <span class="popup__error popup__error_type_name">Вы не ввели имя</span>
+      <input type="text" name="username" pattern="${NO_WHITESPACES_AT_BOTH_ENDS_PATTERN}" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите своё имя">
+      <span class="popup__error popup__error_type_name"></span>
     </div>
     <div class="popup__button-cover">
       <span class="popup__error popup__error_type_other"></span>

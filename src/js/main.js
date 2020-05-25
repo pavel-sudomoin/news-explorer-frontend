@@ -13,6 +13,7 @@ import headerRefresh from './utils/header-refresh';
 import getUserData from './utils/get-user-data';
 import setArticlesState from './utils/set-articles-state';
 import dateToString from './utils/date-to-string';
+import returnValidateErrorMessage from './utils/return-validate-error-message';
 
 import {
   POPUP_CONTENT,
@@ -170,12 +171,17 @@ popup.addHandlers([
     event: 'input',
     callback: (event) => {
       popupForm.removeServerError();
-      switch (Form.validateInputElement(event.target)) {
+      const errorElem = event.target.nextElementSibling;
+      const inputName = event.target.name;
+      const validity = Form.validateInputElement(event.target);
+      switch (validity.valid) {
         case true:
           event.target.nextElementSibling.classList.remove('popup__error_open');
+          errorElem.textContent = '';
           break;
         case false:
-          event.target.nextElementSibling.classList.add('popup__error_open');
+          errorElem.classList.add('popup__error_open');
+          errorElem.textContent = returnValidateErrorMessage(inputName, validity);
           break;
         default:
       }
