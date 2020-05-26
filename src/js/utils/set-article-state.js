@@ -1,4 +1,4 @@
-export default function setArticlesState({
+export default function setArticleState({
   article,
   id = undefined,
   isSaved = false,
