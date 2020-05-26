@@ -48,7 +48,7 @@ const serverData = getUnathServerData();
 
 // устанавливаем параметры
 newsCardList.setArticlesParams('.results__found-articles');
-info.setParams('.info__number-of-articles', '.info__text-bold');
+info.setParams('.info__number-of-articles', '.info__key-words');
 
 
 // задаём обработчики

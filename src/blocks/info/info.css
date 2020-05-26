@@ -1,7 +1,7 @@
 @import url('./__title/info__title.css');
 @import url('./__number-of-articles/info__number-of-articles.css');
+@import url('./__key-words-wrapper/info__key-words-wrapper.css');
 @import url('./__key-words/info__key-words.css');
-@import url('./__text-bold/info__text-bold.css');
 
 .info  {
   box-sizing: border-box;
