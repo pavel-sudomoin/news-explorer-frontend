@@ -1,5 +1,4 @@
-export default function setArticlesId(articles = [], userData) {
-  const { articles: userAricles } = userData;
+export default function setArticlesId(articles = [], userAricles) {
   articles.forEach((article) => {
     const { link } = article.getData();
     const userArticle = userAricles.find((target) => link === target.link);

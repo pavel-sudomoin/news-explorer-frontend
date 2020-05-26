@@ -72,7 +72,10 @@ export default class NewsCard {
   }
 
   getId() {
-    return this._articleId;
+    if (this._articleId) return this._articleId;
+    const { _id: id } = this._data;
+    if (id) return id;
+    return undefined;
   }
 
   getContent() {

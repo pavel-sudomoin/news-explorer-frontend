@@ -1,12 +1,14 @@
-export default function infoRefresh(info, userData) {
-  if (!userData.auth) return;
+export default function infoRefresh(info, serverData) {
+  const { user: { name, auth }, articles } = serverData;
 
-  const stringWithAmount = `${userData.name}, у вас ${userData.articles.length} сохранённых статей`;
+  if (!auth) return;
+
+  const stringWithAmount = `${name}, у вас ${articles.length} сохранённых статей`;
 
   let stringWithKeys = 'тест';
 
   const keysObj = {};
-  userData.articles.forEach((article) => {
+  articles.forEach((article) => {
     const key = article.keyword;
     keysObj[key] = keysObj[key] + 1 || 1;
   });

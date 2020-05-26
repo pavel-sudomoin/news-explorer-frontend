@@ -1,5 +1,6 @@
-export default function setArticlesState(articles = [], userData) {
-  const { auth, articles: userAricles } = userData;
+export default function setArticlesState(articles = [], serverData) {
+  const { user: { auth }, articles: userAricles } = serverData;
+
   articles.forEach((article) => {
     if (!auth) {
       article.renderIcon('unauth');

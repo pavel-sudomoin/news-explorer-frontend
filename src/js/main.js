@@ -11,6 +11,8 @@ import NewsCardList from '../blocks/results/news-card-list';
 
 import headerRefresh from './utils/header-refresh';
 import getUserData from './utils/get-user-data';
+import getSavedArticlesData from './utils/get-saved-articles-data';
+import getUnathServerData from './utils/get-unath-server-data';
 import setArticlesState from './utils/set-articles-state';
 import dateToString from './utils/date-to-string';
 import returnValidateErrorMessage from './utils/return-validate-error-message';
@@ -70,8 +72,10 @@ const popupForms = Object.entries(popup.contentList()).reduce(
 const searchForm = new Form(SEARCH_FORM_CONTAINER);
 const newsCardList = new NewsCardList(RESULT_CONTAINER, RESULT_MAINPAGE_CONTENT);
 
-let userData = {};
+
+// создаём переменные
 let popupForm;
+let serverData = getUnathServerData();
 const popupOverlay = {
   mousedown: false,
   mouseup: false,
@@ -152,9 +156,10 @@ popup.addHandlers([
         case 'form-signin':
           try {
             await mainApi.signin(popupForm.getInfo());
-            userData = await getUserData(mainApi);
-            headerRefresh(header, userData);
-            setArticlesState(newsCardList.getArticles(), userData);
+            serverData.user = await getUserData(mainApi);
+            headerRefresh(header, serverData.user);
+            serverData.articles = await getSavedArticlesData(mainApi);
+            setArticlesState(newsCardList.getArticles(), serverData);
             popupForm.clear();
             popup.close();
           } catch (error) {
@@ -207,9 +212,9 @@ header.addHandlers([
           if (!window.confirm(CONFIRM_LOGOUT_MESSAGE)) return;
           try {
             await mainApi.logout();
-            userData = {};
+            serverData = getUnathServerData();
             header.render({ isLoggedIn: false });
-            setArticlesState(newsCardList.getArticles(), userData);
+            setArticlesState(newsCardList.getArticles(), serverData);
           } catch (err) {
             alert(`${CANNOT_LOGOUT_MESSAGE} - ${err.message}`);
           }
@@ -256,7 +261,7 @@ searchForm.addHandlers([
           }
           return result;
         }, []);
-        setArticlesState(articles, userData);
+        setArticlesState(articles, serverData);
         newsCardList.renderResults(articles, NUMBER_ARTICLES_FOR_DISPLAY);
       } catch (error) {
         newsCardList.renderError();
@@ -292,24 +297,24 @@ newsCardList.addHandlers([
       }
       if (targetClasses.contains('article__control_save_unmarked') || targetClasses.contains('article__control_save_marked')) {
         if (targetClasses.contains('article__control_processing')) return;
-        if (!userData.auth) return;
+        if (!serverData.user.auth) return;
         const article = newsCardList.getArticles()
           .find((parent) => parent.getContent().contains(event.target));
         if (!article) return;
         article.onprocess();
         if (targetClasses.contains('article__control_save_unmarked')) {
           try {
-            await mainApi.createArticle(article.getData());
-            userData = await getUserData(mainApi);
-            setArticlesState(newsCardList.getArticles(), userData);
+            const newArticleData = await mainApi.createArticle(article.getData());
+            serverData.articles.push(newArticleData);
+            setArticlesState(newsCardList.getArticles(), serverData);
           } catch (err) {
             alert(`${CANNOT_SAVE_ARTICLE_MESSAGE} - ${err.message}`);
           }
         } else if (targetClasses.contains('article__control_save_marked')) {
           try {
-            await mainApi.removeArticle(article.getId());
-            userData = await getUserData(mainApi);
-            setArticlesState(newsCardList.getArticles(), userData);
+            const { _id: id } = await mainApi.removeArticle(article.getId());
+            serverData.articles.splice(serverData.articles.findIndex((item) => item._id === id), 1);
+            setArticlesState(newsCardList.getArticles(), serverData);
           } catch (err) {
             alert(`${CANNOT_DELETE_ARTICLE_MESSAGE} - ${err.message}`);
           }
@@ -329,6 +334,9 @@ document.addEventListener('keyup', (event) => {
 
 
 (async () => {
-  userData = await getUserData(mainApi);
-  headerRefresh(header, userData);
+  serverData.user = await getUserData(mainApi);
+  headerRefresh(header, serverData.user);
+  if (serverData.user.auth) {
+    serverData.articles = await getSavedArticlesData(mainApi);
+  }
 })();
