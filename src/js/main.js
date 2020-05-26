@@ -14,6 +14,7 @@ import getUserData from './utils/get-user-data';
 import getSavedArticlesData from './utils/get-saved-articles-data';
 import getUnathServerData from './utils/get-unath-server-data';
 import setArticlesState from './utils/set-articles-state';
+import setArticleState from './utils/set-article-state';
 import dateToString from './utils/date-to-string';
 import returnValidateErrorMessage from './utils/return-validate-error-message';
 
@@ -306,7 +307,7 @@ newsCardList.addHandlers([
           try {
             const newArticleData = await mainApi.createArticle(article.getData());
             serverData.articles.push(newArticleData);
-            setArticlesState(newsCardList.getArticles(), serverData);
+            setArticleState({ article, id: newArticleData._id, isSaved: true });
           } catch (err) {
             alert(`${CANNOT_SAVE_ARTICLE_MESSAGE} - ${err.message}`);
           }
@@ -314,7 +315,7 @@ newsCardList.addHandlers([
           try {
             const { _id: id } = await mainApi.removeArticle(article.getId());
             serverData.articles.splice(serverData.articles.findIndex((item) => item._id === id), 1);
-            setArticlesState(newsCardList.getArticles(), serverData);
+            setArticleState({ article, isDeleted: true });
           } catch (err) {
             alert(`${CANNOT_DELETE_ARTICLE_MESSAGE} - ${err.message}`);
           }
