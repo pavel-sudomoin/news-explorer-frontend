@@ -1,52 +1,52 @@
-import '../pages/main.css';
+import './pages/main.css';
 
-import MainApi from './api/main-api';
-import NewsApi from './api/news-api';
+import MainApi from './js/api/main-api';
+import NewsApi from './js/api/news-api';
 
-import Header from '../blocks/header/header';
-import Popup from '../blocks/popup/popup';
-import Form from '../blocks/popup/__form/form';
-import NewsCard from '../blocks/article/news-card';
-import NewsCardList from '../blocks/news-card-list/news-card-list';
+import Header from './blocks/header/header';
+import Popup from './blocks/popup/popup';
+import Form from './blocks/popup/__form/form';
+import NewsCard from './blocks/article/news-card';
+import NewsCardList from './blocks/news-card-list/news-card-list';
 
-import headerRefresh from './utils/header-refresh';
-import getUserData from './utils/get-user-data';
-import getSavedArticlesData from './utils/get-saved-articles-data';
-import getUnathServerData from './utils/get-unath-server-data';
-import setArticlesState from './utils/set-articles-state';
-import setArticleState from './utils/set-article-state';
-import dateToString from './utils/date-to-string';
-import returnValidateErrorMessage from './utils/return-validate-error-message';
-import findArticleByEventTarget from './utils/find-article-by-event-target';
-import findArticleIndexById from './utils/find-article-index-by-id';
+import headerRefresh from './js/utils/header-refresh';
+import getUserData from './js/utils/get-user-data';
+import getSavedArticlesData from './js/utils/get-saved-articles-data';
+import getUnathServerData from './js/utils/get-unath-server-data';
+import setArticlesState from './js/utils/set-articles-state';
+import setArticleState from './js/utils/set-article-state';
+import dateToString from './js/utils/date-to-string';
+import returnValidateErrorMessage from './js/utils/return-validate-error-message';
+import findArticleByEventTarget from './js/utils/find-article-by-event-target';
+import findArticleIndexById from './js/utils/find-article-index-by-id';
 
 import {
   POPUP_CONTENT,
   RESULT_MAINPAGE_CONTENT,
   ARTICLE_MAINPAGE_CONTENT,
-} from './constants/templates';
+} from './js/constants/templates';
 import {
   POPUP_CONTAINER,
   HEADER_CONTAINER,
   SEARCH_FORM_CONTAINER,
   RESULT_CONTAINER,
-} from './constants/elements';
+} from './js/constants/elements';
 import {
   MAIN_API_URL,
   NEWS_API_URL,
   NEWS_API_KEY,
   NEWS_API_PERIOD,
-} from './constants/api-config';
+} from './js/constants/api-config';
 import {
   EMPTY_SEARCH_FIELD_MESSAGE,
   CANNOT_DELETE_ARTICLE_MESSAGE,
   CANNOT_SAVE_ARTICLE_MESSAGE,
   CANNOT_LOGOUT_MESSAGE,
   CONFIRM_LOGOUT_MESSAGE,
-} from './constants/messages';
+} from './js/constants/messages';
 import {
   NUMBER_ARTICLES_FOR_DISPLAY,
-} from './constants/values';
+} from './js/constants/values';
 
 
 // создаём инстансы классов
