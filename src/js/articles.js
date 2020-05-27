@@ -4,7 +4,7 @@ import MainApi from './api/main-api';
 
 import Header from '../blocks/header/header';
 import Info from '../blocks/info/info';
-import NewsCardList from '../blocks/results/news-card-list';
+import NewsCardList from '../blocks/news-card-list/news-card-list';
 
 import headerRefresh from './utils/header-refresh';
 import infoRefresh from './utils/info-refresh';

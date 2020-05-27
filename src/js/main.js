@@ -7,7 +7,7 @@ import Header from '../blocks/header/header';
 import Popup from '../blocks/popup/popup';
 import Form from '../blocks/popup/__form/form';
 import NewsCard from '../blocks/article/news-card';
-import NewsCardList from '../blocks/results/news-card-list';
+import NewsCardList from '../blocks/news-card-list/news-card-list';
 
 import headerRefresh from './utils/header-refresh';
 import getUserData from './utils/get-user-data';
