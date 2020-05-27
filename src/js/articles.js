@@ -12,6 +12,8 @@ import savedArticlesRefresh from './utils/saved-articles-refresh';
 import getUserData from './utils/get-user-data';
 import getSavedArticlesData from './utils/get-saved-articles-data';
 import getUnathServerData from './utils/get-unath-server-data';
+import findArticleByEventTarget from './utils/find-article-by-event-target';
+import findArticleIndexById from './utils/find-article-index-by-id';
 
 import { RESULT_SAVEDPAGE_CONTENT } from './constants/templates';
 import {
@@ -79,13 +81,12 @@ newsCardList.addHandlers([
       if (targetClasses.contains('article__control')) {
         if (targetClasses.contains('article__control_processing')) return;
         if (!serverData.user.auth) return;
-        const article = newsCardList.getArticles()
-          .find((parent) => parent.getContent().contains(event.target));
+        const article = findArticleByEventTarget(newsCardList, event.target);
         if (!article) return;
         article.onprocess();
         try {
           const { _id: id } = await mainApi.removeArticle(article.getId());
-          serverData.articles.splice(serverData.articles.findIndex((item) => item._id === id), 1);
+          serverData.articles.splice(findArticleIndexById(serverData.articles, id), 1);
           newsCardList.delete(article);
         } catch (err) {
           alert(`${CANNOT_DELETE_ARTICLE_MESSAGE} - ${err.message}`);

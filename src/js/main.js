@@ -17,6 +17,8 @@ import setArticlesState from './utils/set-articles-state';
 import setArticleState from './utils/set-article-state';
 import dateToString from './utils/date-to-string';
 import returnValidateErrorMessage from './utils/return-validate-error-message';
+import findArticleByEventTarget from './utils/find-article-by-event-target';
+import findArticleIndexById from './utils/find-article-index-by-id';
 
 import {
   POPUP_CONTENT,
@@ -299,8 +301,7 @@ newsCardList.addHandlers([
       if (targetClasses.contains('article__control_save_unmarked') || targetClasses.contains('article__control_save_marked')) {
         if (targetClasses.contains('article__control_processing')) return;
         if (!serverData.user.auth) return;
-        const article = newsCardList.getArticles()
-          .find((parent) => parent.getContent().contains(event.target));
+        const article = findArticleByEventTarget(newsCardList, event.target);
         if (!article) return;
         article.onprocess();
         if (targetClasses.contains('article__control_save_unmarked')) {
@@ -314,7 +315,7 @@ newsCardList.addHandlers([
         } else if (targetClasses.contains('article__control_save_marked')) {
           try {
             const { _id: id } = await mainApi.removeArticle(article.getId());
-            serverData.articles.splice(serverData.articles.findIndex((item) => item._id === id), 1);
+            serverData.articles.splice(findArticleIndexById(serverData.articles, id), 1);
             setArticleState({ article, isDeleted: true });
           } catch (err) {
             alert(`${CANNOT_DELETE_ARTICLE_MESSAGE} - ${err.message}`);
