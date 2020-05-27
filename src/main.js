@@ -262,7 +262,7 @@ searchForm.addHandlers([
             link: current.url,
             image: current.urlToImage,
           };
-          const isInvalid = Object.values(data).some((val) => val === null);
+          const isInvalid = Object.values(data).some((val) => !val);
           if (!isInvalid) {
             result.push(new NewsCard(ARTICLE_MAINPAGE_CONTENT.cloneNode(true), data));
           }
