@@ -1,5 +1,5 @@
 import templatesHandler from '../utils/templates-handler';
-import { EMAIL_PATTERN, NO_WHITESPACES_AT_BOTH_ENDS_PATTERN } from './values';
+import { EMAIL_PATTERN, PASSWORD_PATTERN, NO_WHITESPACES_AT_BOTH_ENDS_PATTERN } from './values';
 
 
 const POPUP_SIGNIN_HTML = `
@@ -14,7 +14,7 @@ const POPUP_SIGNIN_HTML = `
     </div>
     <div class="popup__input-cover">
       <span class="popup__input-title">Пароль</span>
-      <input type="text" name="password" pattern="${NO_WHITESPACES_AT_BOTH_ENDS_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
+      <input type="text" name="password" pattern="${PASSWORD_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
       <span class="popup__error popup__error_type_password"></span>
     </div>
     <div class="popup__button-cover">
@@ -40,7 +40,7 @@ const POPUP_SIGNUP_HTML = `
     </div>
     <div class="popup__input-cover">
       <span class="popup__input-title">Пароль</span>
-      <input type="text" name="password" pattern="${NO_WHITESPACES_AT_BOTH_ENDS_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
+      <input type="text" name="password" pattern="${PASSWORD_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
       <span class="popup__error popup__error_type_password"></span>
     </div>
     <div class="popup__input-cover">

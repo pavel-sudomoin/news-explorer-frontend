@@ -189,7 +189,11 @@ popup.addHandlers([
           break;
         case false:
           errorElem.classList.add('popup__error_open');
-          errorElem.textContent = returnValidateErrorMessage(inputName, validity);
+          errorElem.textContent = returnValidateErrorMessage(
+            inputName,
+            validity,
+            event.target.value,
+          );
           break;
         default:
       }
