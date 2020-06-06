@@ -1,4 +1,4 @@
-# Дипломная работа для Yandex.Praktikum - фронтенд проекта NewsExplorer 
+# Дипломная работа для Yandex.Praktikum - фронтенд проекта NewsExplorer
 
 ## Версия
 

@@ -14,7 +14,7 @@ const POPUP_SIGNIN_HTML = `
     </div>
     <div class="popup__input-cover">
       <span class="popup__input-title">Пароль</span>
-      <input type="text" name="password" pattern="${PASSWORD_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
+      <input type="password" name="password" pattern="${PASSWORD_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
       <span class="popup__error popup__error_type_password"></span>
     </div>
     <div class="popup__button-cover">
@@ -40,7 +40,7 @@ const POPUP_SIGNUP_HTML = `
     </div>
     <div class="popup__input-cover">
       <span class="popup__input-title">Пароль</span>
-      <input type="text" name="password" pattern="${PASSWORD_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
+      <input type="password" name="password" pattern="${PASSWORD_PATTERN}" required minlength="8" class="popup__input popup__input_type_password" placeholder="Введите пароль">
       <span class="popup__error popup__error_type_password"></span>
     </div>
     <div class="popup__input-cover">
