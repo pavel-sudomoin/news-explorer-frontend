@@ -5,13 +5,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
-    main: './src/js/main.js',
-    articles: './src/js/articles.js',
+    main: './src/main.js',
+    articles: './src/articles/articles.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -72,12 +73,20 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      template: './src/articles.html',
+      template: './src/articles/articles.html',
       filename: './articles/index.html',
     }),
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/images/not-found.svg'),
+          to: path.resolve(__dirname, 'dist/images'),
+        },
+      ],
     }),
   ],
 };

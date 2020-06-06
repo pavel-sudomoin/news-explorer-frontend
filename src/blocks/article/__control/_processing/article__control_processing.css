@@ -1,0 +1,9 @@
+.article__control_processing:after {
+  animation: spin .75s infinite linear;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

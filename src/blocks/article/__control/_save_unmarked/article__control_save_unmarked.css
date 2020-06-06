@@ -1,8 +1,8 @@
-.article__control_save_unmarked {
+.article__control_save_unmarked:after {
   background-image: url(../../../../images/save-icon-normal.svg);
 }
 
-.article__control_save_unmarked:hover {
+.article__control_save_unmarked:hover:after {
   background-image: url(../../../../images/save-icon-hover.svg);
 }
 

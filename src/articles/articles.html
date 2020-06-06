@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="NewsExplorer - cервис для поиска и сохранения новостей">
+    <meta name="author" content="Sudomoin Pavel">
+    <title>NewsExplorer</title>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.articles.css %>">
+    <link rel="shortcut icon" href="../<%=require('../images/favicon.ico').default%>" type="image/x-icon">
+  </head>
+  <body>
+    <div class="page">
+        <header class="header header_border-non-transparent header_login">
+          <div class="header__wrapper">
+            <a class="header__logo link link_text_black" href="../">NewsExplorer</a>
+            <div class="header__menu-btn header__menu-btn_not-pressed-theme_black"></div>
+            <nav class="header__nav">
+              <ul class="header__nav-items">
+                <li class="header__nav-item">
+                  <a class="header__link link link_text_black" href="../">Главная</a>
+                </li>
+                <li class="header__nav-item header__nav-item_saved-articles">
+                  <a class="header__link header__link_current_black link link_text_black" href="./">Сохранённые статьи</a>
+                </li>
+                <li class="header__nav-item header__nav-item_logout-btn">
+                  <button class="header__auth-btn button button_border_black button_text_black">
+                    <span class="header__user-name"></span>
+                    <span class="header__auth-btn-logout-icon header__auth-btn-logout-icon_black"></span>
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="header__overlay"></div>
+        </header>
+      <main>
+        <section class="info">
+          <h1 class="info__title">Сохранённые статьи</h1>
+          <h2 class="info__number-of-articles"></h2>
+          <p class="info__key-words-wrapper">По ключевым словам: <span class="info__key-words"></span></p>
+        </section>
+        <section class="results page__saved-articles results_open"></section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
+        <div class="footer__link-wrapper">
+          <ul class="footer__nav-items">
+            <li class="footer__nav-item">
+              <a class="footer__nav-link link" href="../">Главная</a>
+            </li>
+            <li class="footer__nav-item">
+              <a class="footer__nav-link link" target="_blank" href="https://praktikum.yandex.ru/">Яндекс.Практикум</a>
+            </li>
+          </ul>
+          <ul class="footer__soc-items">
+            <li class="footer__soc-item">
+              <a class="footer__soc-link link" target="_blank" href="https://github.com/pavel-sudomoin/news-explorer-frontend">
+                <img class="footer__soc-image" src="../<%=require('../images/github-logo.svg').default%>" alt="GitHub">
+              </a>
+            </li>
+            <li class="footer__soc-item">
+              <a class="footer__soc-link link" target="_blank" href="https://facebook.com">
+                <img class="footer__soc-image" src="../<%=require('../images/facebook-logo.svg').default%>" alt="Facebook">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+    <script src="<%= htmlWebpackPlugin.files.chunks.articles.entry %>"></script>
+  </body>
+</html>
