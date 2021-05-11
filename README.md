@@ -16,11 +16,11 @@
 
 Получить доступ к проекту можно по следующим ссылкам:
 
-* https://sudomoin-pavel-news-explorer.tk
-* https://www.sudomoin-pavel-news-explorer.tk
-* http://sudomoin-pavel-news-explorer.tk
-* http://www.sudomoin-pavel-news-explorer.tk
-* https://pavel-sudomoin.github.io/news-explorer-frontend/
+* <s>https://sudomoin-pavel-news-explorer.tk</s>
+* <s>https://www.sudomoin-pavel-news-explorer.tk</s>
+* <s>http://sudomoin-pavel-news-explorer.tk</s>
+* <s>http://www.sudomoin-pavel-news-explorer.tk</s>
+* <s>https://pavel-sudomoin.github.io/news-explorer-frontend/</s>
 
 На том же сервере размещён бэкенд проекта.
 
